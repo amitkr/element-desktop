@@ -8,7 +8,7 @@ First Steps
 Before you do anything else, fetch the dependencies:
 
 ```
-yarn install
+npm install
 ```
 
 Fetching Element
@@ -20,7 +20,7 @@ so the first step is to get a working copy of Element Web. There are a few ways 
 # Fetch the prebuilt release Element package from the element-web GitHub releases page. The version
 # fetched will be the same as the local element-desktop package.
 # We're explicitly asking for no config, so the packaged Element will have no config.json.
-yarn run fetch --noverify --cfgdir ''
+npm run fetch --noverify --cfgdir ''
 ```
 
 ...or if you'd like to use GPG to verify the downloaded package:
@@ -28,16 +28,16 @@ yarn run fetch --noverify --cfgdir ''
 # Fetch the Element public key from the element.io web server over a secure connection and import
 # it into your local GPG keychain (you'll need GPG installed). You only need to to do this
 # once.
-yarn run fetch --importkey
+npm run fetch --importkey
 # Fetch the package and verify the signature
-yarn run fetch --cfgdir ''
+npm run fetch --cfgdir ''
 ```
 
 ...or either of the above, but fetching a specific version of Element:
 ```
 # Fetch the prebuilt release Element package from the element-web GitHub releases page. The version
 # fetched will be the same as the local element-desktop package.
-yarn run fetch --noverify --cfgdir '' v1.5.6
+npm run fetch --noverify --cfgdir '' v1.5.6
 ```
 
 If you only want to run the app locally and don't need to build packages, you can
@@ -61,7 +61,7 @@ require a number of native tools to be installed, depending on your OS (eg.
 rust, tcl, make/nmake). If you don't need these features, you can skip this
 step.
 ```
-yarn run build:native
+npm run build:native
 ```
 
 On Windows, this will automatically determine the architecture to build for based
@@ -70,7 +70,7 @@ on the environment (ie. set up by vcvarsall.bat).
 Now you can build the package:
 
 ```
-yarn run build
+npm run build
 ```
 This will do a couple of things:
  * Run the `setversion` script to set the local package version to match whatever
@@ -80,11 +80,11 @@ This will do a couple of things:
 
 If you're on Windows, you can choose to build specifically for 32 or 64 bit:
 ```
-yarn run build32
+npm run build32
 ```
 or
 ```
-yarn run build64
+npm run build64
 ```
 
 This build step will not build any native modules.
@@ -92,12 +92,12 @@ This build step will not build any native modules.
 You can also build using docker, which will always produce the linux package:
 ```
 # Run this once to make the docker image
-yarn run docker:setup
+npm run docker:setup
 
-yarn run docker:install
+npm run docker:install
 # if you want to build the native modules (this will take a while)
-yarn run docker:buildnative
-yarn run docker:build
+npm run docker:build:native
+npm run docker:build
 ```
 
 After running, the packages should be in `dist/`.
@@ -108,8 +108,8 @@ If you'd just like to run the electron app locally for development:
 ```
 # Install electron - we don't normally need electron itself as it's provided
 # by electron-builder when building packages
-yarn add electron
-yarn start
+npm add electron
+npm start
 ```
 
 Config
@@ -120,7 +120,7 @@ with the `--cfgdir` option to `yarn run fetch`, eg:
 ```
 mkdir myconfig
 cp /path/to/my/config.json myconfig/
-yarn run fetch --cfgdir myconfig
+npm run fetch --cfgdir myconfig
 ```
 The config dir for the official Element app is in `element.io`. If you use this,
 your app will auto-update itself using builds from element.io.
