@@ -7,6 +7,10 @@ First Steps
 ===========
 Before you do anything else, fetch the dependencies:
 
+# Install Rust - https://www.rust-lang.org/tools/install
+# Install sqlcipher `apt install libsqlcipher-dev`
+# `apt install libsecret-1-dev`
+
 ```
 yarn install
 ```
